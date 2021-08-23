@@ -1,0 +1,22 @@
+export const types = {
+  authLogin: '[auth] Login',
+  authLogout: '[auth] Logout',
+
+  clientsLoaded: '[client] Clients loaded',
+  clientsSave: '[client] Save cliente',
+  clientsUpdate: '[client] Update cliente',
+  clientsActive: '[client] Active Client',
+  clientsDelete: '[client] Delete Client',
+  clientsUpload: '[client] Upload foto Client',
+
+  uiOpenModal: '[ui] Open Modal',
+  uiCloseModal: '[ui] Close Modal',
+  uiOpenModalCliente: '[ui] Open Modal Cliente',
+  uiCloseModalCliente: '[ui] Close Modal Cliente',
+  uiPaginatorPages: '[ui] Paginator total pages',
+  uiImageUpload: '[ui] Upload Image',
+  uiImageRemove: '[ui] Remove Image',
+  uiProgressUpload: '[ui] Progress Upload',
+
+  upload: '[upload] UploadImage',
+};
