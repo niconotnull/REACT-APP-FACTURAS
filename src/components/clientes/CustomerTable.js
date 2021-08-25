@@ -8,14 +8,16 @@ import {
   clientsStartLoaded,
 } from '../../actions/client';
 import { uiStartOpenModal, uiStartOpenModalCliente } from '../../actions/ui';
-import { useParams } from 'react-router-dom';
+import { Link, Redirect, useHistory, useParams } from 'react-router-dom';
 import { Paginator } from '../ui/Paginator';
 import icono from '../../assets/images/usuario-upload.jpg';
 import { ClienteSpaceModal } from './ClienteSpaceModal';
+import { startBillRead } from '../../actions/factura';
 
 export const CustomerTable = () => {
   const dispatch = useDispatch();
   const { paginator } = useSelector((state) => state.ui);
+  const history = useHistory();
 
   const { page } = useParams();
 
@@ -25,28 +27,29 @@ export const CustomerTable = () => {
     dispatch(clientsStartLoaded(page));
   }, [dispatch, page]);
 
+  const handleNewBill = (c) => {
+    console.log('click');
+    dispatch(clientsActive(c));
+    history.push(`/factura/nueva`);
+  };
+
   useEffect(() => {
     if (clients.length === 0 && paginator.pages) {
-      console.log('Esta es la pagina0 ', page);
       if (paginator.pages !== 0 && paginator.number !== 0) {
-        console.log('Esta es la pagina1 ', page);
         dispatch(clientsStartLoaded(page - 1));
       }
       if (paginator.pages !== 0 && paginator.number === 0) {
-        console.log('Esta es la pagina2 ', page);
         dispatch(clientsStartLoaded(page));
       }
     }
   }, [clients, paginator, dispatch, page]);
 
   const handleUpdate = (c) => {
-    console.log('Actualizar cliente', c);
     dispatch(clientsActive(c));
     dispatch(uiStartOpenModal());
   };
 
   const handleDelete = (id) => {
-    console.log('Delete client', id);
     Swal.fire({
       title: '¿Está seguro?',
       text: 'No podrás revertir esto!',
@@ -66,6 +69,7 @@ export const CustomerTable = () => {
   const handleOpenModal = (c) => {
     dispatch(uiStartOpenModalCliente());
     dispatch(clientsActive(c));
+    dispatch(startBillRead(c.id));
   };
 
   return (
@@ -103,7 +107,7 @@ export const CustomerTable = () => {
                     <td>{noteDate.format('MMMM Do YYYY, h:mm:ss a')}</td>
                     <td>
                       <button
-                        className='btn btn-primary '
+                        className='btn btn-primary btn-sm'
                         type='button'
                         onClick={() => handleUpdate(c)}>
                         Editar
@@ -111,11 +115,20 @@ export const CustomerTable = () => {
                     </td>
                     <td>
                       <button
-                        className='btn btn-danger  ml-2'
+                        className='btn btn-danger  btn-sm ml-2'
                         type='button'
                         onClick={() => handleDelete(c.id)}>
                         Eliminar
                       </button>
+                    </td>
+                    <td>
+                      {/* <Link to={`/factura/nueva/${c.id}`}> */}
+                      <button
+                        className='btn btn-success  btn-sm ml-2'
+                        onClick={() => handleNewBill(c)}>
+                        Agregar factura
+                      </button>
+                      {/* </Link> */}
                     </td>
                   </tr>
                 );

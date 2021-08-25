@@ -18,5 +18,9 @@ export const types = {
   uiImageRemove: '[ui] Remove Image',
   uiProgressUpload: '[ui] Progress Upload',
 
+  billReadBills: '[ui] Read bills',
+  billClearBills: '[ui] Clear bills',
+  billDeleteBill: '[ui] Delete bill',
+
   upload: '[upload] UploadImage',
 };

@@ -8,20 +8,19 @@ import {
   uiStartProgressUpload,
 } from '../../actions/ui';
 import icono from '../../assets/images/usuario-upload.jpg';
-import {
-  uploadStartImage,
-  uploadStartImageProgress,
-} from '../../actions/upload';
+import { uploadStartImageProgress } from '../../actions/upload';
 import { clientsActive } from '../../actions/client';
+import { FacturasScreen } from '../facturas/FacturasScreen';
+import { startBillClear } from '../../actions/factura';
 
 const customStyles = {
   content: {
     top: '40%',
-    left: '50%',
+    left: '60%',
     right: 'auto',
     bottom: 'auto',
     marginRight: '-10%',
-    transform: 'translate(-50%, -50%)',
+    transform: 'translate(-10%, -20%)',
   },
 };
 
@@ -62,6 +61,7 @@ export const ClienteSpaceModal = () => {
     dispatch(clientsActive());
     dispatch(uiStartCloseModalCliente());
     dispatch(uiStartProgressUpload(0));
+    dispatch(startBillClear());
   };
 
   const handleFileChange = (e) => {
@@ -96,13 +96,14 @@ export const ClienteSpaceModal = () => {
   return (
     <Modal
       isOpen={modalOpenCliente}
+      // isOpen={true}
       // onAfterClose={afterOpenModal}
       onRequestClose={handleCloseModal}
       style={customStyles}
       closeTimeoutMS={200}
       contentLabel='Example Modal'
-      classNameNameName='modal'
-      overlayclassNameNameName='modal-fondo'>
+      className='modalFacturas'
+      overlayclassName='modal-fondo'>
       <input
         id='fileSelector2'
         type='file'
@@ -111,7 +112,9 @@ export const ClienteSpaceModal = () => {
         onChange={handleFileChange}
       />
 
-      <div className='card mb-3' style={{ maxWidth: '540px' }}>
+      <div
+        className='card mb-3'
+        style={{ maxWidth: '840px', maxHeight: '1040px' }}>
         <div className='row g-0'>
           <div className='col-md-4'>
             <img
@@ -131,11 +134,7 @@ export const ClienteSpaceModal = () => {
               <h5 className='card-title'>
                 {nombre} {apellido}
               </h5>
-              <p className='card-text'>
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </p>
+              <FacturasScreen />
               <p className='card-text'>
                 <small className='text-muted'>
                   {noteDate.format('MMMM Do YYYY, h:mm:ss a')}
