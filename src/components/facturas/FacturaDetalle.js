@@ -63,7 +63,7 @@ export const FacturaDetalle = () => {
               <tbody>
                 {facturaSelected.items.map((e) => {
                   return (
-                    <tr>
+                    <tr key={e.id}>
                       <td>{e.producto.nombre}</td>
                       <td>{e.producto.precio}</td>
                       <td>{e.cantidad}</td>

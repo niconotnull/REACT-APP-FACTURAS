@@ -63,6 +63,7 @@ export const ClienteModal = () => {
     if (isValidForm()) {
       if (clientActive) {
         console.log('formValues ', formValues);
+        formValues.facturas = null;
         dispatch(clientStartUpdate(formValues));
       } else {
         dispatch(clientStartSave(formValues));

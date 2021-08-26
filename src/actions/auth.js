@@ -65,6 +65,9 @@ export const startIsAuthenticated = () => {
           'info'
         );
       }
+    } else {
+      // Swal.fire('Error', 'Error al validar el token', 'error');
+      dispatch(checkingFinish());
     }
   };
 };
@@ -83,4 +86,8 @@ const login = (user) => ({
 
 const logout = () => ({
   type: types.authLogout,
+});
+
+const checkingFinish = () => ({
+  type: types.authCheckingFinish,
 });

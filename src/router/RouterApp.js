@@ -10,12 +10,17 @@ import { PublicRoute } from './PublicRoute';
 export const RouterApp = () => {
   const { checking, username } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-
+  console.log('checking : ', checking);
   useEffect(() => {
     dispatch(startIsAuthenticated());
   }, [dispatch]);
 
   if (checking) {
+    console.log('paso aqui');
+    setTimeout(function () {
+      <h1>ESPERE...</h1>;
+    }, 3000);
+
     return <h1>ESPERE...</h1>;
   }
 

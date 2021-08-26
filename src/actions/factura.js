@@ -17,9 +17,25 @@ export const startBillRead = (id = 0) => {
   };
 };
 
+export const startBillSave = (factura) => {
+  return async (dispatch) => {
+    const response = await fetchConToken('factura', factura, 'POST');
+    const body = await response.json();
+    console.log('SAve factura : ', body);
+  };
+};
+
+export const startProductos = (termino) => {
+  return async (dispatch) => {
+    const response = await fetchConToken(`factura/productos/${termino}`);
+    const body = await response.json();
+    return body;
+  };
+};
+
 export const startBillDelete = (id) => {
   return async (dispatch) => {
-    const response = await fetchConToken(`factura/${id}`, id, 'DELETE');
+    await fetchConToken(`factura/${id}`, id, 'DELETE');
     dispatch(deleteBill(id));
   };
 };

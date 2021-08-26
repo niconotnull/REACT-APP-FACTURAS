@@ -48,7 +48,7 @@ export const FacturasScreen = () => {
                 <tr key={e.id}>
                   <td>
                     <Link to={`/factura/client/${e.id}`}>
-                      <button className='btn btn-outline-info btn-sm'>
+                      <button className='btn btn-success  btn-sm'>
                         {e.id}
                       </button>{' '}
                     </Link>

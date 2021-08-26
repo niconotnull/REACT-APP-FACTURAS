@@ -8,7 +8,7 @@ import {
   clientsStartLoaded,
 } from '../../actions/client';
 import { uiStartOpenModal, uiStartOpenModalCliente } from '../../actions/ui';
-import { Link, Redirect, useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { Paginator } from '../ui/Paginator';
 import icono from '../../assets/images/usuario-upload.jpg';
 import { ClienteSpaceModal } from './ClienteSpaceModal';
@@ -126,7 +126,7 @@ export const CustomerTable = () => {
                       <button
                         className='btn btn-success  btn-sm ml-2'
                         onClick={() => handleNewBill(c)}>
-                        Agregar factura
+                        Factura
                       </button>
                       {/* </Link> */}
                     </td>

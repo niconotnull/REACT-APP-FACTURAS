@@ -1,10 +1,11 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import { startLogout } from '../../actions/auth';
 
 export const Navbar = () => {
   const dispatch = useDispatch();
+  const { nombre, apellido } = useSelector((state) => state.auth);
 
   const handleLogout = () => {
     dispatch(startLogout());
@@ -13,7 +14,9 @@ export const Navbar = () => {
   return (
     <nav className='navbar navbar-expand-sm navbar-dark bg-dark'>
       <Link className='navbar-brand' to='/'>
-        Asociaciones
+        <span className='badge badge-light'>
+          {nombre} {apellido}
+        </span>
       </Link>
 
       <div className='navbar-collapse'>

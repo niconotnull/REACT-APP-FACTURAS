@@ -1,6 +1,7 @@
 export const types = {
   authLogin: '[auth] Login',
   authLogout: '[auth] Logout',
+  authCheckingFinish: '[auth] Finish login',
 
   clientsLoaded: '[client] Clients loaded',
   clientsSave: '[client] Save cliente',
@@ -8,6 +9,7 @@ export const types = {
   clientsActive: '[client] Active Client',
   clientsDelete: '[client] Delete Client',
   clientsUpload: '[client] Upload foto Client',
+  clientFindById: '[client] Client find by id',
 
   uiOpenModal: '[ui] Open Modal',
   uiCloseModal: '[ui] Close Modal',

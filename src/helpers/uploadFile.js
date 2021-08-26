@@ -4,7 +4,7 @@ export const uploadFile = async (file) => {
   const formData = new FormData();
   formData.append('upload_preset', 'react-journal');
   formData.append('file', file);
-  const token = localStorage.getItem('token') || '';
+  // const token = localStorage.getItem('token') || '';
 
   try {
     const resp = await fetch(url, {
